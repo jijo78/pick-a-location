@@ -16,7 +16,14 @@ interface Props {
 const Container = styled('section')`
   position: relative;
 `
-
+const Header = styled('header')`
+  margin: 0 auto;
+  max-width: 72rem;
+  padding: 2rem 0;
+  img {
+    width: 30%;
+  }
+`
 const Main = styled('main')`
   margin: 0 auto;
   max-width: 60rem;
@@ -26,7 +33,6 @@ const Main = styled('main')`
 export const Search: FC<Props> = () => {
   const [shouldFetch, setShouldFetch] = useState(false)
   const [term, setTerm] = useState('')
-  const [validating, setIsValidating] = useState(false)
 
   const { data, error, isValidating } = useSWR(
     shouldFetch
@@ -54,12 +60,14 @@ export const Search: FC<Props> = () => {
 
   return (
     <>
-      <a href="https://www.rentalcars.com/" data-testid="brand-logo" rel="">
-        <img
-          src="https://cdn.rcstatic.com/images/site_graphics/newsite/mobile/logos/rc-logo-small--white.svg"
-          alt="Rentalcars.com Brand Logo"
-        />
-      </a>
+      <Header>
+        <a href="https://www.rentalcars.com/" data-testid="brand-logo" rel="">
+          <img
+            src="https://cdn.rcstatic.com/images/site_graphics/newsite/mobile/logos/rc-logo-small--white.svg"
+            alt="Rentalcars.com Brand Logo"
+          />
+        </a>
+      </Header>
       <Main>
         <div>
           <h2>Where are you going?</h2>
